@@ -1,191 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="utf-8" />
 <title>PANCAST</title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<style>
-
-#map {
-height: 100vh;
-}
-
-#runtime {
-position: absolute;
-bottom: 20px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 1000;
-
-background: rgba(0,0,0,0.85);
-color: white;
-
-padding: 10px 16px;
-font-size: 18px;
-font-family: Arial, sans-serif;
-
-border-radius: 6px;
-}
-
-#timeline {
-position: absolute;
-bottom: 70px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 1000;
-
-background: rgba(0,0,0,0.8);
-padding: 10px 16px;
-border-radius: 6px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-#slider {
-width: 250px;
-}
-
-button {
-background: white;
-border: none;
-padding: 6px 10px;
-cursor: pointer;
-border-radius: 4px;
-}
-
-</style>
-
 </head>
 
 <body>
 
-<div id="runtime">Valid: loading...</div>
+<div id="titleBox">
+PANCAST — Thunderstorm Probability
+</div>
 
 <div id="timeline">
-<button id="playpause">⏸</button>
-<input type="range" id="slider" min="0" max="3" value="0">
+    <div id="runtime">
+        Valid: <span id="validTime">loading...</span>
+    </div>
+
+    <div id="timelineControls">
+        <button id="playpause">▶</button>
+        <input type="range" id="slider" min="0" value="0">
+    </div>
+</div>
+
+<div id="legend">
+    <div id="legendHeader">
+        <button id="legendToggle" title="Legend">☰</button>
+    </div>
+
+    <div id="legendBody">
+        <div class="legendLabel">high</div>
+        <div id="colorbar"></div>
+        <div class="legendLabel">low</div>
+    </div>
 </div>
 
 <div id="map"></div>
 
-<script>
-
-var bounds = [
-[-39.91001, -23.102037],
-[26.57356, 79.549774]
-];
-
-var map = L.map('map');
-map.fitBounds(bounds);
-
-L.tileLayer(
-'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-{
-maxZoom: 10
-}
-).addTo(map);
-
-
-var frames = [
-"images/pancast_t030.png",
-"images/pancast_t060.png",
-"images/pancast_t090.png",
-"images/pancast_t120.png"
-];
-
-var validTimes = [];
-
-
-frames.forEach(function(src){
-var img = new Image();
-img.src = src;
-});
-
-
-var current = 0;
-
-var overlay = L.imageOverlay(frames[current], bounds, {
-opacity: 0.8,
-interactive: false
-}).addTo(map);
-
-
-var slider = document.getElementById("slider");
-
-slider.oninput = function(){
-
-current = parseInt(this.value);
-
-overlay.setUrl(frames[current]);
-
-updateTime();
-
-};
-
-
-function updateTime(){
-
-if(validTimes.length > 0){
-document.getElementById("runtime").innerHTML =
-"Valid: " + validTimes[current];
-}
-
-}
-
-
-function nextFrame(){
-
-current = (current + 1) % frames.length;
-
-slider.value = current;
-
-overlay.setUrl(frames[current]);
-
-updateTime();
-
-}
-
-
-var playing = true;
-
-var timer = setInterval(nextFrame, 1200);
-
-
-document.getElementById("playpause").onclick = function(){
-
-if(playing){
-
-clearInterval(timer);
-this.innerHTML = "▶";
-playing = false;
-
-}else{
-
-timer = setInterval(nextFrame, 1200);
-this.innerHTML = "⏸";
-playing = true;
-
-}
-
-};
-
-
-fetch("latest.json")
-.then(response => response.json())
-.then(data => {
-
-validTimes = data.valid_times;
-
-updateTime();
-
-});
-
-</script>
+<script src="js/app.js"></script>
 
 </body>
 </html>

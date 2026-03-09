@@ -4,7 +4,7 @@
 
 #timeline {
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
@@ -120,4 +120,31 @@ button {
     font-weight: 600;
     letter-spacing: 0.3px;
     white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+#slider {
+width: 200px;
+}
+
+#timeline {
+bottom: 30px;
+padding: 14px 16px;
+}
+
+#titleBox {
+font-size: 16px;
+padding: 8px 14px;
+}
+
+button {
+padding: 8px 12px;
+font-size: 16px;
+}
+
+#legend {
+left: 10px;
+}
+
 }

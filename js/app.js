@@ -4,11 +4,12 @@ const bounds = [
 ];
 
 const frames = [
-    "images/pancast_t030.png",
-    "images/pancast_t060.png",
-    "images/pancast_t090.png",
-    "images/pancast_t120.png"
+    "outputs/live/regular/pancast_t030.png",
+    "outputs/live/regular/pancast_t060.png",
+    "outputs/live/regular/pancast_t090.png",
+    "outputs/live/regular/pancast_t120.png"
 ];
+
 
 let validTimes = [];
 let current = 0;

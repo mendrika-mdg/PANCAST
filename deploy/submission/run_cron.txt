@@ -1,0 +1,1 @@
+*/5 * * * * /home/users/mendrika/Object-Based-LSTMConv/notebooks/model/deploy/submission/run_main.sh >> /work/scratch-nopw2/mendrika/pancast-live/log/live/portal.log 2>&1

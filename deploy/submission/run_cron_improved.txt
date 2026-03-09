@@ -1,0 +1,1 @@
+*/15 * * * * /home/users/mendrika/Object-Based-LSTMConv/notebooks/model/deploy/submission/run_pancast_wrapper.sh >> /home/users/mendrika/pancast_cron.log 2>&1

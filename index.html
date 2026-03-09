@@ -14,19 +14,47 @@
 height: 100vh;
 }
 
-#timestamp {
+#runtime {
 position: absolute;
-top: 10px;
-right: 10px;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
 z-index: 1000;
 
-background: rgba(0,0,0,0.7);
+background: rgba(0,0,0,0.85);
 color: white;
 
-padding: 6px 10px;
-font-size: 16px;
+padding: 10px 16px;
+font-size: 18px;
 font-family: Arial, sans-serif;
 
+border-radius: 6px;
+}
+
+#timeline {
+position: absolute;
+bottom: 70px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 1000;
+
+background: rgba(0,0,0,0.8);
+padding: 10px 16px;
+border-radius: 6px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+#slider {
+width: 250px;
+}
+
+button {
+background: white;
+border: none;
+padding: 6px 10px;
+cursor: pointer;
 border-radius: 4px;
 }
 
@@ -36,7 +64,13 @@ border-radius: 4px;
 
 <body>
 
-<div id="timestamp">Lead time: +30 min</div>
+<div id="runtime">Valid: loading...</div>
+
+<div id="timeline">
+<button id="playpause">⏸</button>
+<input type="range" id="slider" min="0" max="3" value="0">
+</div>
+
 <div id="map"></div>
 
 <script>
@@ -64,15 +98,10 @@ var frames = [
 "images/pancast_t120.png"
 ];
 
-var labels = [
-"Lead time: +30 min",
-"Lead time: +60 min",
-"Lead time: +90 min",
-"Lead time: +120 min"
-];
+var validTimes = [];
 
 
-frames.forEach(function(src) {
+frames.forEach(function(src){
 var img = new Image();
 img.src = src;
 });
@@ -86,18 +115,75 @@ interactive: false
 }).addTo(map);
 
 
-function nextFrame() {
+var slider = document.getElementById("slider");
 
-current = (current + 1) % frames.length;
+slider.oninput = function(){
+
+current = parseInt(this.value);
 
 overlay.setUrl(frames[current]);
 
-document.getElementById("timestamp").innerHTML = labels[current];
+updateTime();
+
+};
+
+
+function updateTime(){
+
+if(validTimes.length > 0){
+document.getElementById("runtime").innerHTML =
+"Valid: " + validTimes[current];
+}
 
 }
 
 
-setInterval(nextFrame, 1200);
+function nextFrame(){
+
+current = (current + 1) % frames.length;
+
+slider.value = current;
+
+overlay.setUrl(frames[current]);
+
+updateTime();
+
+}
+
+
+var playing = true;
+
+var timer = setInterval(nextFrame, 1200);
+
+
+document.getElementById("playpause").onclick = function(){
+
+if(playing){
+
+clearInterval(timer);
+this.innerHTML = "▶";
+playing = false;
+
+}else{
+
+timer = setInterval(nextFrame, 1200);
+this.innerHTML = "⏸";
+playing = true;
+
+}
+
+};
+
+
+fetch("latest.json")
+.then(response => response.json())
+.then(data => {
+
+validTimes = data.valid_times;
+
+updateTime();
+
+});
 
 </script>
 

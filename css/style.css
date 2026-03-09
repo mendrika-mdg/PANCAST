@@ -125,17 +125,19 @@ button {
 @media (max-width: 768px) {
 
 #slider {
-width: 200px;
+width: min(280px, 70vw);
 }
 
 #timeline {
-bottom: 30px;
-padding: 14px 16px;
+width: min(320px, 85vw);
 }
 
 #titleBox {
-font-size: 16px;
-padding: 8px 14px;
+font-size: 14px;
+padding: 6px 12px;
+top: 12px;
+max-width: 90vw;
+white-space: nowrap;
 }
 
 button {

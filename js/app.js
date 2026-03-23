@@ -16,7 +16,15 @@ let current = 0;
 let playing = false;
 let timer = null;
 
-const map = L.map("map");
+
+const map = L.map("map", {
+    zoomControl: false
+});
+
+L.control.zoom({
+    position: 'bottomright'
+}).addTo(map);
+
 map.fitBounds(bounds);
 
 L.tileLayer(

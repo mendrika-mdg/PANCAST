@@ -150,3 +150,41 @@ left: 10px;
 }
 
 }
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 2000;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+#navbar .logo {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+#navbar .links {
+    display: flex;
+    gap: 20px;
+}
+
+#navbar a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+#navbar a:hover {
+    color: white;
+}

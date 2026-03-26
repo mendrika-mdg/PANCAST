@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8" />
-<title>PANCAST – About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About</title>
 
 <link rel="stylesheet" href="/css/style.css"/>
 
@@ -10,13 +13,125 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    padding-top: 80px;
+    background: #f7f7f7;
+    color: #111;
 }
 
+/* NAVBAR */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 2000;
+    box-sizing: border-box;
+}
+
+#navbar .logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#navbar .links {
+    display: flex;
+    gap: 20px;
+}
+
+#navbar a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#navbar a:hover {
+    color: white;
+}
+
+/* CONTAINER */
 .container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+    width: 100%;
+    padding: 110px 40px 80px 40px;
+    box-sizing: border-box;
+}
+
+/* TITLE */
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+/* INTRO */
+.container > p {
+    font-size: 18px;
+    color: #444;
+    max-width: 900px;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 15px;
+    color: #444;
+}
+
+/* TECH SECTION */
+.tech-section {
+    margin-top: 60px;
+    max-width: 900px;
+}
+
+.tech-section h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.tech-section p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer b {
+    color: white;
 }
 </style>
 
@@ -37,12 +152,63 @@ body {
     </div>
 </div>
 
+<!-- CONTENT -->
 <div class="container">
-    <h1>About PANCAST</h1>
 
-    <p>PANCAST provides short-term forecasts of convective storms across Africa using satellite data and machine learning.</p>
+<h1>About PANCAST</h1>
 
-    <p>The system is designed to support forecasting, research, and decision-making in regions where observational data is limited.</p>
+<p>
+PANCAST predicts thunderstorms across Africa using satellite data and artificial intelligence.
+</p>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>🌍 Pan-African coverage</h3>
+        <p>Covers the entire African continent with consistent monitoring.</p>
+    </div>
+
+    <div class="card">
+        <h3>⚡ Very fast updates</h3>
+        <p>Updated every 15 minutes, just a few minutes after receiving satellite data.</p>
+    </div>
+
+    <div class="card">
+        <h3>⏳ Short-term forecasts</h3>
+        <p>Forecasts up to 2 hours ahead at 30, 60, 90 and 120 minutes.</p>
+    </div>
+
+    <div class="card">
+        <h3>📍 High resolution</h3>
+        <p>Provides detailed forecasts at around 3 km resolution.</p>
+    </div>
+
+</div>
+
+<!-- TECH DETAILS -->
+<div class="tech-section">
+
+<h2>Technical overview</h2>
+
+<p>
+PANCAST uses satellite observations to detect and track convective cloud systems in real time. These observations are processed to identify key features of developing storms, such as their location, size, and evolution over time.
+</p>
+
+<p>
+A machine learning model analyses these features to estimate the probability of thunderstorm occurrence in the near future. The model is trained on historical data and designed to capture the behaviour of rapidly evolving convective systems.
+</p>
+
+<p>
+The resulting forecasts are provided as probabilistic maps, allowing users to assess the likelihood of storms across large regions and at fine spatial resolution.
+</p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+    Contact — <b>contact@pancast.io</b>
 </div>
 
 </body>

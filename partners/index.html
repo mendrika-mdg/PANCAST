@@ -8,6 +8,14 @@
 <title>PANCAST – Partners</title>
 
 <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #111;
+}
+
+/* NAVBAR */
 #navbar {
     position: fixed;
     top: 0;
@@ -20,14 +28,12 @@
     justify-content: space-between;
     padding: 0 30px;
     z-index: 2000;
-    font-family: Arial, sans-serif;
     box-sizing: border-box;
 }
 
 #navbar .logo {
     font-weight: bold;
     font-size: 18px;
-    letter-spacing: 1px;
 }
 
 #navbar .links {
@@ -39,33 +45,106 @@
     color: #ddd;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.2s;
 }
 
 #navbar a:hover {
     color: white;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #111;
-}
-
+/* CONTAINER */
 .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 100px 20px 40px 20px;
+    width: 100%;
+    padding: 110px 40px 80px 40px;
+    box-sizing: border-box;
 }
 
+/* TITLE */
 h1 {
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
-p {
-    line-height: 1.5;
-    color: #333;
+/* INTRO */
+.container > p {
+    font-size: 18px;
+    color: #444;
+    max-width: 900px;
+}
+
+/* GRID */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 140px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* LOGO */
+.card img {
+    height: 70px;
+}
+
+/* DESCRIPTION */
+.desc {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #444;
+    text-align: center;
+    display: none;
+}
+
+.card.active .desc {
+    display: block;
+}
+
+/* ➕ PLUS ICON */
+.plus {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 18px;
+    color: #aaa;
+    transition: transform 0.2s ease;
+}
+
+/* rotate when open */
+.card.active .plus {
+    transform: rotate(45deg);
+}
+
+/* FOOTER */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer b {
+    color: white;
 }
 </style>
 
@@ -73,7 +152,6 @@ p {
 
 <body>
 
-<!-- NAVBAR -->
 <div id="navbar">
     <div class="logo">
         <a href="/" style="color:white; text-decoration:none;">
@@ -86,7 +164,6 @@ p {
     </div>
 </div>
 
-<!-- CONTENT -->
 <div class="container">
 
 <h1>Partners</h1>
@@ -95,17 +172,56 @@ p {
 PANCAST is developed in collaboration with research and operational partners across Africa and internationally.
 </p>
 
-<p>
-We aim to support forecasting, research, and decision-making using AI and satellite data.
-</p>
+<div class="grid-2">
 
-<p>
-If you are interested in collaboration, please contact:
-<br><br>
-<b>contact@pancast.io</b>
-</p>
+    <div class="card" onclick="toggleDesc(this)">
+        <span class="plus">+</span>
+        <img src="../images/logo/pancast.png">
+        <div class="desc">
+            PANCAST is an AI-based nowcasting system for predicting thunderstorms across Africa.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggleDesc(this)">
+        <span class="plus">+</span>
+        <img src="../images/logo/spa.png">
+        <div class="desc">
+            Sciences Physiques et Avenir supports scientific outreach and education in Madagascar.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggleDesc(this)">
+        <span class="plus">+</span>
+        <img src="../images/logo/cree.jpg">
+        <div class="desc">
+            CREE conducts research on environment, climate and Earth systems in Madagascar.
+        </div>
+    </div>
+
+    <div class="card" onclick="toggleDesc(this)">
+        <span class="plus">+</span>
+        <img src="../images/logo/leeds.png">
+        <div class="desc">
+            The University of Leeds contributes expertise in machine learning and weather forecasting.
+        </div>
+    </div>
 
 </div>
+
+</div>
+
+<div id="footer">
+    Contact — <b>contact@pancast.io</b>
+</div>
+
+<script>
+function toggleDesc(box) {
+    document.querySelectorAll('.card').forEach(b => {
+        if (b !== box) b.classList.remove('active');
+    });
+    box.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>

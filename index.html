@@ -16,6 +16,26 @@
 body {
     margin: 0;
 }
+
+/* FLOATING INFO BOX */
+#infoBox {
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 500px;
+    text-align: center;
+    pointer-events: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
 </style>
 
 </head>
@@ -23,11 +43,10 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<!-- NAVBAR -->
 <div id="navbar">
     <div class="logo">
         <a href="/" style="color:white; text-decoration:none;">
-            PANCAST Thunderstorm Probability
+            PANCAST
         </a>
     </div>
     <div class="links">
@@ -37,7 +56,12 @@ body {
     </div>
 </div>
 
+<!-- INFO BOX -->
+<div id="infoBox">
+    ⚡ PANCAST shows real-time thunderstorm probability across Africa using satellite data and AI.
+</div>
 
+<!-- TIMELINE -->
 <div id="timeline">
     <div id="runtime">
         Valid: <span id="validTime">loading...</span>
@@ -49,6 +73,7 @@ body {
     </div>
 </div>
 
+<!-- LEGEND -->
 <div id="legend">
     <div id="legendHeader">
         <button id="legendToggle" title="Legend">☰</button>
@@ -61,9 +86,27 @@ body {
     </div>
 </div>
 
+<!-- MAP -->
 <div id="map"></div>
 
 <script src="js/app.js"></script>
+
+<!-- INFO BOX SCRIPT -->
+<script>
+window.onload = function() {
+    const box = document.getElementById("infoBox");
+
+    // show every time
+    setTimeout(() => {
+        box.style.opacity = 1;
+    }, 200);
+
+    // hide after 5 seconds
+    setTimeout(() => {
+        box.style.opacity = 0;
+    }, 5200);
+};
+</script>
 
 </body>
 </html>

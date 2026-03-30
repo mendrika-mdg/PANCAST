@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Opportunities</title>
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #111;
+}
+
+/* NAVBAR */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 2000;
+    box-sizing: border-box;
+}
+
+#navbar .logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#navbar .links {
+    display: flex;
+    gap: 20px;
+}
+
+#navbar a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#navbar a:hover {
+    color: white;
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    padding: 110px 40px 80px 40px;
+    box-sizing: border-box;
+}
+
+/* TITLE */
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+/* INTRO */
+.container > p {
+    font-size: 18px;
+    color: #444;
+    max-width: 900px;
+}
+
+/* SECTION TITLES */
+h2 {
+    margin-top: 50px;
+    font-size: 24px;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 15px;
+    color: #444;
+}
+
+.card span {
+    font-size: 13px;
+    color: gray;
+}
+
+/* FOOTER */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer b {
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar">
+    <div class="logo">
+        <a href="/" style="color:white; text-decoration:none;">
+            PANCAST Thunderstorm Probability
+        </a>
+    </div>
+    <div class="links">
+        <a href="/about/">About</a>
+        <a href="/partners/">Partners</a>
+        <a href="/news/">Opportunities</a>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+<h1>Opportunities for Students</h1>
+
+<p>
+Scholarships, internships, and training opportunities in AI, data science, and Earth sciences.
+Always check official websites for deadlines and requirements.
+</p>
+
+<!-- DATA SCIENCE & AI -->
+<h2>Data Science & AI</h2>
+
+<div class="cards">
+
+    <a class="card" href="https://aimsammi.org" target="_blank">
+        <h3>AIMS / AMMI (Africa)</h3>
+        <p>Fully funded MSc in Mathematical Sciences and AI across Africa.</p>
+        <span>MSc • Fully funded</span>
+    </a>
+
+    <a class="card" href="https://www.sarao.ac.za/researchandstudy/6th-big-data-africa-school/" target="_blank">
+        <h3>Big Data Africa School</h3>
+        <p>Intensive school on data science, HPC, and machine learning.</p>
+        <span>Short course • Data Science</span>
+    </a>
+
+</div>
+
+<!-- RESEARCH & TRAINING -->
+<h2>Research & Training</h2>
+
+<div class="cards">
+
+    <a class="card" href="https://www.dara-project.org/basic-program" target="_blank">
+        <h3>DARA – Astrophysics & Big Data</h3>
+        <p>Training in radio astronomy, astrophysics, and data science.</p>
+        <span>Training • Research • Fully funded</span>
+    </a>
+
+    <a class="card" href="https://www.ictp.it" target="_blank">
+        <h3>ICTP (Italy)</h3>
+        <p>Advanced programmes in physics, mathematics, and Earth sciences.</p>
+        <span>Training • MSc / PhD</span>
+    </a>
+
+    <a class="card" href="https://www.horizon-europe.gouv.fr" target="_blank">
+        <h3>Horizon Europe (France / Réunion)</h3>
+        <p>Research opportunities linked to European projects.</p>
+        <span>Research • MSc / PhD</span>
+    </a>
+
+</div>
+
+<!-- DEGREES -->
+<h2>Fully Funded Degrees</h2>
+
+<div class="cards">
+
+    <a class="card" href="https://www.daad.de/en/" target="_blank">
+        <h3>DAAD (Germany)</h3>
+        <p>Scholarships for MSc and PhD in Germany.</p>
+        <span>MSc / PhD • Funded</span>
+    </a>
+
+    <a class="card" href="https://www.studyinindia.gov.in" target="_blank">
+        <h3>Study in India</h3>
+        <p>Government scholarships in STEM fields.</p>
+        <span>MSc • Funded</span>
+    </a>
+
+    <a class="card" href="https://www.studyinkorea.go.kr" target="_blank">
+        <h3>South Korea Scholarships</h3>
+        <p>Funded degrees in science, engineering, and AI.</p>
+        <span>MSc / PhD</span>
+    </a>
+
+    <a class="card" href="https://education-in-russia.com" target="_blank">
+        <h3>Russia Scholarships</h3>
+        <p>State-funded programmes for international students.</p>
+        <span>MSc / PhD</span>
+    </a>
+
+    <a class="card" href="https://www.mastercardfoundation.org" target="_blank">
+        <h3>Mastercard Foundation (UK)</h3>
+        <p>Fully funded scholarships (e.g. Edinburgh).</p>
+        <span>MSc • Fully funded</span>
+    </a>
+
+    <a class="card" href="https://www.ox.ac.uk/admissions/graduate/fees-and-funding" target="_blank">
+        <h3>Oxford Scholarships</h3>
+        <p>Funding schemes including Clarendon Fund.</p>
+        <span>MSc / PhD</span>
+    </a>
+
+</div>
+
+<!-- INTERNSHIPS -->
+<h2>Internships & Programmes</h2>
+
+<div class="cards">
+
+    <a class="card" href="https://afrika-kommt.de" target="_blank">
+        <h3>Afrika Kommt</h3>
+        <p>Leadership programme with internships in Germany.</p>
+        <span>Internship • Training</span>
+    </a>
+
+    <a class="card" href="https://www.cactus.is.mpg.de" target="_blank">
+        <h3>CACTUS – MPI Internship</h3>
+        <p>Research internship in AI at Max Planck Institute.</p>
+        <span>Internship • AI</span>
+    </a>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+    Contact — <b>contact@pancast.io</b>
+</div>
+
+</body>
+</html>

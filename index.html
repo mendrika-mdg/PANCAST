@@ -71,6 +71,7 @@ body {
 
     <div id="timelineControls">
         <button id="playpause">▶</button>
+        <button id="refreshBtn" title="Refresh nowcast">↻</button>
         <input type="range" id="slider" min="0" value="0">
     </div>
 </div>
@@ -95,19 +96,24 @@ body {
 
 <!-- INFO BOX SCRIPT -->
 <script>
-window.onload = function() {z
+window.onload = function() {
     const box = document.getElementById("infoBox");
 
-    // show every time
     setTimeout(() => {
         box.style.opacity = 1;
     }, 200);
 
-    // hide after 5 seconds
     setTimeout(() => {
         box.style.opacity = 0;
     }, 5200);
 };
+
+// Refresh button (cache bypass)
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("refreshBtn").onclick = function() {
+        window.location.href = window.location.pathname + "?t=" + Date.now();
+    };
+});
 </script>
 
 </body>

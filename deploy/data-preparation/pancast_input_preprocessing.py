@@ -46,7 +46,7 @@ class PreProcessor:
         x_scaled = flat.view(T, N, F)
 
         return x_scaled if is_batched else x_scaled.squeeze(0)
-
+ 
     @torch.no_grad()
     def process_single_input(x_raw: torch.Tensor, scaler_path: str) -> torch.Tensor:
         processor = PreProcessor(scaler_path)

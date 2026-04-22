@@ -3,26 +3,18 @@ const bounds = [
     [26.57356, 79.549774]
 ];
 
-const frames = [
-    "outputs/live/regular/pancast_t030.png",
-    "outputs/live/regular/pancast_t060.png",
-    "outputs/live/regular/pancast_t090.png",
-    "outputs/live/regular/pancast_t120.png"
-];
-
-
+let frames = [];
 let validTimes = [];
 let current = 0;
 let playing = false;
 let timer = null;
-
 
 const map = L.map("map", {
     zoomControl: false
 });
 
 L.control.zoom({
-    position: 'bottomright'
+    position: "bottomright"
 }).addTo(map);
 
 map.fitBounds(bounds);
@@ -38,14 +30,7 @@ const legendToggle = document.getElementById("legendToggle");
 const legendBody = document.getElementById("legendBody");
 const validTime = document.getElementById("validTime");
 
-slider.max = frames.length - 1;
-
-frames.forEach(function(src) {
-    const img = new Image();
-    img.src = src;
-});
-
-const overlay = L.imageOverlay(frames[current], bounds, {
+const overlay = L.imageOverlay("", bounds, {
     opacity: 0.8,
     interactive: false
 }).addTo(map);
@@ -85,7 +70,6 @@ slider.oninput = function() {
     if (playing) {
         stopAnimation();
     }
-
     showFrame(parseInt(this.value));
 };
 
@@ -109,5 +93,22 @@ fetch("latest.json")
 .then(response => response.json())
 .then(data => {
     validTimes = data.valid_times;
-    updateTime();
+
+    const ts = encodeURIComponent(data.t0);
+
+    frames = [
+        "outputs/live/regular/pancast_t030.png?t=" + ts,
+        "outputs/live/regular/pancast_t060.png?t=" + ts,
+        "outputs/live/regular/pancast_t090.png?t=" + ts,
+        "outputs/live/regular/pancast_t120.png?t=" + ts
+    ];
+
+    slider.max = frames.length - 1;
+
+    frames.forEach(function(src) {
+        const img = new Image();
+        img.src = src;
+    });
+
+    showFrame(0);
 });

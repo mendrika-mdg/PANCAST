@@ -124,32 +124,32 @@ button {
 
 @media (max-width: 768px) {
 
-#slider {
-width: min(280px, 70vw);
-}
-
 #timeline {
-width: min(320px, 85vw);
+    width: 90vw;
+    padding: 6px 8px;
+    gap: 4px;
+    bottom: 12px;
 }
 
-#titleBox {
-font-size: 14px;
-padding: 6px 12px;
-top: 12px;
-max-width: 90vw;
-white-space: nowrap;
+#runtime {
+    font-size: 12px;
+}
+
+#timelineControls {
+    gap: 6px;
+}
+
+#slider {
+    width: 55vw;
 }
 
 button {
-padding: 8px 12px;
-font-size: 16px;
-}
-
-#legend {
-left: 10px;
+    padding: 4px 6px;
+    font-size: 14px;
 }
 
 }
+
 #navbar {
     position: fixed;
     top: 0;
